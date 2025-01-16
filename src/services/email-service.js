@@ -2,13 +2,13 @@
  const TicketRepository = require('../repository/ticket-repository');
  const repo = new TicketRepository();
 
-const sendBasicEmail = async (mailFrom, mailTo, mailSubject, mailBody) => {
+const sendBasicEmail = async (data) => {
     try {
         const response = await transporter.sendMail({
-            from: mailFrom,
-            to: mailTo,
-            subject: mailSubject,
-            html: mailBody
+            from: data.mailFrom,
+            to: data.mailTo,
+            subject: data.mailSubject,
+            text: data.mailBody
         });
         console.log(response);
     } catch (error) {
